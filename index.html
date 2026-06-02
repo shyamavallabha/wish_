@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>For Monisha 🤍</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Caveat:wght@400;600;700&family=DM+Serif+Display:ital@0;1&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:    #f9f3e8;
+  --petal:    #f4c4c4;
+  --rose:     #e07878;
+  --terracotta: #c9714a;
+  --sage:     #a8bc9a;
+  --dusty-sky:#9bb8cc;
+  --lavender: #c4aed4;
+  --ink:      #2a1f1f;
+  --warm-mid: #7a5a42;
+  --gold:     #d4a832;
+  --butter:   #f7e9c3;
+  --peach:    #f5d0b5;
+  --mint:     #c5ddd1;
+  --white:    #ffffff;
+}
+*, *::before, *::after { box-sizing: border-box; margin:0; padding:0; -webkit-tap-highlight-color: transparent; }
+
+body, html {
+  width:100%; min-height:100%;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Lato', sans-serif;
+  overflow-x: hidden;
+}
+
+.grain {
+  position: fixed; inset:0; pointer-events:none; z-index:200;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:.5;
+}
+
+.bg-shapes { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+.bg-shape  { position:absolute; border-radius:50%; opacity:.18; filter:blur(40px); }
+.bs1 { width:280px; height:280px; background:var(--petal);   top:-60px; right:-50px; }
+.bs2 { width:200px; height:200px; background:var(--sage);    bottom:20%; left:-60px; }
+.bs3 { width:160px; height:160px; background:var(--lavender);top:40%;  right:-30px; }
+.bs4 { width:120px; height:120px; background:var(--gold);    bottom:5%; right:10%; }
+
+.petal-layer { position:fixed; inset:0; pointer-events:none; z-index:1; overflow:hidden; }
+.petal { position:absolute; width:10px; height:10px; border-radius:50% 0 50% 0; opacity:0; animation: petalFall linear infinite; }
+@keyframes petalFall {
+  0%   { transform:translateY(-20px) rotate(0deg); opacity:.7; }
+  100% { transform:translateY(100vh) rotate(360deg); opacity:0; }
+}
+
+/* ======== SCREEN SYSTEM ======== */
+.screen {
+  position:relative; width:100%; min-height:100vh;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:32px 20px; z-index:10;
+  transition: opacity .7s ease, transform .7s ease;
+}
+.screen.hidden { opacity:0; pointer-events:none; transform:scale(.97); display:none; }
+
+/* ======== PHASE 1 ======== */
+#screen-intro { gap: 0; }
+
+.intro-card {
+  max-width:340px; width:100%;
+  background: var(--white);
+  border-radius:24px;
+  box-shadow: 0 8px 48px rgba(42,31,31,.10), 0 2px 8px rgba(42,31,31,.06);
+  padding: 40px 32px 36px;
+  text-align:center;
+  position:relative;
+  border: 1.5px solid rgba(196,174,212,.35);
+  z-index:10;
+}
+.intro-card::before { content:'✿'; position:absolute; top:12px; left:16px; font-size:1.4rem; color:var(--petal); opacity:.7; }
+.intro-card::after  { content:'✿'; position:absolute; bottom:14px; right:16px; font-size:1.1rem; color:var(--sage); opacity:.6; }
+
+.gift-svg-wrap { width:88px; height:88px; margin: 0 auto 20px; position:relative; }
+.gift-svg-wrap svg { width:100%; height:100%; animation: giftBob 3s ease-in-out infinite; filter: drop-shadow(0 6px 12px rgba(192,100,80,.18)); }
+@keyframes giftBob {
+  0%,100% { transform:translateY(0) rotate(-1deg); }
+  50%      { transform:translateY(-6px) rotate(1deg); }
+}
+
+.intro-label { font-family:'Caveat', cursive; font-size:1.15rem; color:var(--warm-mid); margin-bottom:8px; letter-spacing:.5px; }
+.intro-big   { font-family:'DM Serif Display', serif; font-size:1.55rem; color:var(--ink); margin-bottom:20px; line-height:1.25; }
+.intro-big span { color:var(--rose); font-style:italic; }
+
+.btn-open {
+  display:inline-flex; align-items:center; gap:8px;
+  background: linear-gradient(135deg, var(--rose) 0%, var(--terracotta) 100%);
+  color:#fff; border:none; border-radius:50px;
+  padding:13px 32px;
+  font-family:'Lato', sans-serif; font-size:.95rem; font-weight:700;
+  cursor:pointer; letter-spacing:.5px;
+  box-shadow: 0 4px 16px rgba(192,100,80,.38);
+  transition: transform .2s, box-shadow .2s;
+}
+.btn-open:active { transform:scale(.97); box-shadow:0 2px 8px rgba(192,100,80,.2); }
+
+.puzzle-box {
+  max-width:340px; width:100%;
+  background:var(--white);
+  border-radius:20px;
+  border: 1.5px dashed rgba(196,174,212,.6);
+  padding:28px 24px 24px;
+  margin-top:16px;
+  text-align:center;
+  animation: slideUp .4s ease;
+  display:none;
+}
+@keyframes slideUp {
+  from { opacity:0; transform:translateY(18px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.puzzle-label { font-family:'Caveat', cursive; font-size:1.05rem; color:var(--warm-mid); margin-bottom:18px; }
+.phrase-row   { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:22px; }
+.phrase-word  { font-family:'DM Serif Display', serif; font-size:1.6rem; color:var(--ink); }
+.blank-input  {
+  width:120px; border:none; border-bottom:2.5px solid var(--rose);
+  background:transparent; font-family:'Caveat', cursive; font-size:1.5rem;
+  text-align:center; color:var(--ink); outline:none; padding-bottom:2px;
+  transition:border-color .2s;
+}
+.blank-input:focus { border-color:var(--terracotta); }
+.btn-verify {
+  background:var(--ink); color:var(--cream); border:none; border-radius:12px;
+  padding:12px 28px;
+  font-family:'Lato', sans-serif; font-size:.9rem; font-weight:700;
+  cursor:pointer; letter-spacing:.6px;
+  box-shadow: 3px 3px 0 var(--rose);
+  transition: transform .15s, box-shadow .15s;
+  margin-right:8px;
+}
+.btn-verify:active { transform:translate(3px,3px); box-shadow:0 0 0 var(--rose); }
+.btn-hint {
+  background:none; border:1.5px dashed var(--petal);
+  color:var(--warm-mid); border-radius:10px;
+  padding:9px 16px; font-family:'Caveat',cursive;
+  font-size:1rem; cursor:pointer; margin-top:12px;
+  display:block; margin-left:auto; margin-right:auto;
+  transition:background .2s;
+}
+.btn-hint:hover { background:rgba(244,196,196,.2); }
+
+@keyframes shake {
+  0%,100%{ transform:translateX(0); }
+  20%    { transform:translateX(-8px); }
+  40%    { transform:translateX(8px); }
+  60%    { transform:translateX(-5px); }
+  80%    { transform:translateX(5px); }
+}
+.shake { animation:shake .4s ease; }
+
+/* ======== PHASE 2 ======== */
+#screen-reveal { justify-content:flex-start; padding:0; overflow:hidden; min-height:100vh; }
+.reveal-inner  { width:100%; display:flex; flex-direction:column; align-items:center; }
+
+.header-section { width:100%; max-width:420px; padding:48px 28px 24px; text-align:center; position:relative; }
+.header-sub  { font-family:'Caveat', cursive; font-size:1.1rem; color:var(--rose); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:6px; }
+.header-main { font-family:'DM Serif Display', serif; font-size:2.3rem; line-height:1.15; color:var(--ink); margin-bottom:10px; }
+.header-main em { color:var(--terracotta); font-style:italic; }
+.header-byline  { font-family:'Playfair Display', serif; font-style:italic; font-size:.95rem; color:var(--warm-mid); line-height:1.7; }
+
+.star-deco { position:absolute; font-size:1.3rem; pointer-events:none; animation: starFloat 4s ease-in-out infinite alternate; }
+.sd1 { top:18px; left:16px; color:var(--gold); animation-delay:0s; }
+.sd2 { top:22px; right:20px; color:var(--rose); animation-delay:1.2s; }
+.sd3 { bottom:4px; left:28px; color:var(--lavender); animation-delay:.6s; font-size:1rem; }
+.sd4 { bottom:8px; right:30px; color:var(--sage); animation-delay:1.8s; font-size:.95rem; }
+@keyframes starFloat {
+  from { transform:translateY(0) rotate(-5deg) scale(1); }
+  to   { transform:translateY(-8px) rotate(5deg) scale(1.1); }
+}
+
+.doodle-divider { width:100%; max-width:380px; margin:0 auto; }
+
+/* ---- CAROUSEL ---- */
+.carousel-wrap { width:100%; overflow:hidden; padding:30px 0 40px; position:relative; }
+.carousel-wrap::before, .carousel-wrap::after {
+  content:''; position:absolute; top:0; bottom:0; width:60px; z-index:20; pointer-events:none;
+}
+.carousel-wrap::before { left:0;  background:linear-gradient(to right, var(--cream), transparent); }
+.carousel-wrap::after  { right:0; background:linear-gradient(to left,  var(--cream), transparent); }
+
+.carousel-track {
+  display:flex; gap:24px; width:max-content;
+  animation: scrollTrack 60s linear infinite;
+  will-change:transform;
+}
+.carousel-track:hover { animation-play-state:paused; }
+
+@keyframes scrollTrack {
+  0%   { transform:translateX(0); }
+  100% { transform:translateX(-50%); }
+}
+
+.polaroid {
+  flex-shrink:0; width:200px;
+  background:#fff; border-radius:4px;
+  padding:12px 12px 44px;
+  box-shadow: 4px 6px 20px rgba(42,31,31,.12), 0 1px 4px rgba(42,31,31,.06);
+  position:relative;
+  transition: transform .35s cubic-bezier(.165,.84,.44,1), box-shadow .35s ease;
+}
+.polaroid:nth-child(4n+1) { transform:rotate(-3.5deg); }
+.polaroid:nth-child(4n+2) { transform:rotate(2.5deg); }
+.polaroid:nth-child(4n+3) { transform:rotate(-1.2deg); }
+.polaroid:nth-child(4n)   { transform:rotate(1.8deg); }
+.polaroid:hover { transform:rotate(0deg) scale(1.07) !important; box-shadow:8px 12px 32px rgba(42,31,31,.18); z-index:30; }
+
+.tape { position:absolute; width:52px; height:18px; top:-9px; left:50%; transform:translateX(-50%) rotate(-2deg); border-radius:3px; opacity:.75; }
+.tape-pink   { background:var(--petal); }
+.tape-blue   { background:var(--dusty-sky); }
+.tape-mint   { background:var(--mint); }
+.tape-butter { background:var(--butter); }
+.tape-lav    { background:var(--lavender); }
+.tape-peach  { background:var(--peach); }
+
+.polaroid img {
+  width:100%; aspect-ratio:4/3; object-fit:cover; display:block;
+  filter:sepia(22%) contrast(108%) brightness(1.03) saturate(1.1);
+  border-radius:2px;
+}
+.polaroid-caption { font-family:'Caveat', cursive; font-size:1.05rem; color:var(--warm-mid); text-align:center; position:absolute; bottom:10px; left:0; right:0; }
+.pol-sticker { position:absolute; font-size:1.3rem; filter:drop-shadow(0 1px 3px rgba(0,0,0,.18)); }
+.ps-tl { top:36px; left:-10px; }
+.ps-br { bottom:36px; right:-10px; }
+
+/* ---- MESSAGE ---- */
+.message-section { max-width:380px; width:100%; padding:16px 28px 52px; text-align:center; }
+.msg-card {
+  background:var(--white); border-radius:20px; padding:28px 24px;
+  box-shadow:0 4px 20px rgba(42,31,31,.08);
+  border:1.5px solid rgba(196,174,212,.3);
+  position:relative; overflow:hidden;
+}
+.msg-card::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(244,196,196,.12) 0%, rgba(196,174,212,.08) 50%, rgba(168,188,154,.1) 100%);
+  pointer-events:none;
+}
+.msg-icon { font-size:1.8rem; margin-bottom:12px; }
+.msg-text { font-family:'Playfair Display', serif; font-style:italic; font-size:1.0rem; line-height:1.85; color:var(--warm-mid); }
+.msg-sig  { display:block; margin-top:16px; font-family:'Caveat', cursive; font-size:1.15rem; color:var(--rose); }
+
+.footer-doodles { display:flex; justify-content:center; align-items:center; gap:8px; padding:0 0 32px; font-size:1.2rem; animation: floatRow 3s ease-in-out infinite alternate; }
+@keyframes floatRow { from { transform:translateY(0); } to { transform:translateY(-6px); } }
+
+.reveal-inner > * { opacity:0; transform:translateY(24px); animation: fadeUp .6s ease forwards; }
+.reveal-inner > *:nth-child(1) { animation-delay:.1s; }
+.reveal-inner > *:nth-child(2) { animation-delay:.3s; }
+.reveal-inner > *:nth-child(3) { animation-delay:.5s; }
+.reveal-inner > *:nth-child(4) { animation-delay:.65s; }
+.reveal-inner > *:nth-child(5) { animation-delay:.8s; }
+.reveal-inner > *:nth-child(6) { animation-delay:.95s; }
+@keyframes fadeUp { to { opacity:1; transform:translateY(0); } }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="bg-shapes">
+  <div class="bg-shape bs1"></div>
+  <div class="bg-shape bs2"></div>
+  <div class="bg-shape bs3"></div>
+  <div class="bg-shape bs4"></div>
+</div>
+<div class="petal-layer" id="petal-layer"></div>
+
+<!-- ============================================================
+     🎵 MUSIC — change the src below to your custom audio file
+     Example: src="photos/birthday_song.mp3"
+     Supported: .mp3  .ogg  .wav
+     ============================================================ -->
+<audio id="bg-music" src="photos/music.mp3" loop></audio>
+
+<!-- ====================== PHASE 1: INTRO ====================== -->
+<div id="screen-intro" class="screen">
+
+  <div class="intro-card" id="intro-main-card">
+    <div class="gift-svg-wrap">
+      <svg viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="14" y="36" width="60" height="40" rx="4" fill="#f5d0b5" stroke="#c9714a" stroke-width="2.2" stroke-linejoin="round"/>
+        <rect x="10" y="28" width="68" height="12" rx="3" fill="#f4c4c4" stroke="#e07878" stroke-width="2.2"/>
+        <rect x="40" y="28" width="8" height="48" rx="2" fill="#e07878" opacity=".7"/>
+        <rect x="10" y="32" width="68" height="4" rx="2" fill="#e07878" opacity=".7"/>
+        <ellipse cx="32" cy="22" rx="14" ry="8" fill="#f4c4c4" stroke="#e07878" stroke-width="2" transform="rotate(-25 32 22)"/>
+        <ellipse cx="56" cy="22" rx="14" ry="8" fill="#c4aed4" stroke="#9c7cb8" stroke-width="2" transform="rotate(25 56 22)"/>
+        <circle cx="44" cy="27" r="6" fill="#fff" stroke="#e07878" stroke-width="2"/>
+        <circle cx="44" cy="27" r="3" fill="#e07878"/>
+        <text x="6" y="18" font-size="12" fill="#d4a832">✦</text>
+        <text x="70" y="16" font-size="10" fill="#c4aed4">✦</text>
+        <text x="72" y="72" font-size="9" fill="#a8bc9a">✦</text>
+      </svg>
+    </div>
+    <p class="intro-label">✉ a little something for you</p>
+    <h1 class="intro-big">A memory <span>you deserve</span></h1>
+    <button class="btn-open" id="open-btn" onclick="showPuzzle()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <path d="M12 2l3 6h6l-5 4 2 6-6-4-6 4 2-6L3 8h6z"/>
+      </svg>
+      Unwrap it
+    </button>
+  </div>
+
+  <div class="puzzle-box" id="puzzle-box">
+    <p class="puzzle-label">🔐 finish the phrase to open the gift...</p>
+    <div class="phrase-row">
+      <span class="phrase-word">midi</span>
+      <input type="text" id="blank-input" class="blank-input" placeholder="_ _ _ _ _ _" autocomplete="off">
+    </div>
+    <button class="btn-verify" onclick="checkAnswer()">Open ✨</button>
+    <button class="btn-hint" onclick="showHint()">psst... give me a hint 🤫</button>
+    <p id="error-msg" style="color:var(--rose);font-family:'Caveat',cursive;font-size:1rem;margin-top:10px;min-height:1.2em;"></p>
+  </div>
+
+</div>
+
+<!-- ====================== PHASE 2: REVEAL ====================== -->
+<div id="screen-reveal" class="screen hidden">
+  <div class="reveal-inner">
+
+    <div class="header-section">
+      <span class="star-deco sd1">✦</span>
+      <span class="star-deco sd2">❀</span>
+      <span class="star-deco sd3">◈</span>
+      <span class="star-deco sd4">✿</span>
+      <p class="header-sub">✦ a birthday surprise ✦</p>
+      <h1 class="header-main">Happiest Birthday,<br><em>Monisha</em> 🎂</h1>
+      <p class="header-byline">may god always protect your smile<br>and walk beside you in every journey<br>of your beautiful life.</p>
+    </div>
+
+    <div class="doodle-divider">
+      <svg viewBox="0 0 380 54" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%">
+        <path d="M10 27 Q50 10 90 27 Q130 44 170 27 Q210 10 250 27 Q290 44 330 27 Q355 18 370 27" stroke="#e07878" stroke-width="1.8" stroke-linecap="round" fill="none" opacity=".5"/>
+        <text x="36" y="14" font-size="13" fill="#f4c4c4">✿</text>
+        <text x="116" y="44" font-size="12" fill="#c4aed4">✾</text>
+        <text x="196" y="13" font-size="14" fill="#a8bc9a">✿</text>
+        <text x="278" y="44" font-size="12" fill="#d4a832">✦</text>
+        <text x="348" y="15" font-size="11" fill="#f4c4c4">❀</text>
+        <text x="75"  y="30" font-size="9" fill="#d4a832" opacity=".7">★</text>
+        <text x="158" y="30" font-size="8" fill="#9bb8cc" opacity=".7">★</text>
+        <text x="245" y="28" font-size="9" fill="#c9714a" opacity=".7">★</text>
+        <text x="315" y="32" font-size="8" fill="#a8bc9a" opacity=".7">★</text>
+      </svg>
+    </div>
+
+    <!-- POLAROID CAROUSEL — 24 real photos from photos/1.jpg … photos/24.jpg -->
+    <div class="carousel-wrap">
+      <div class="carousel-track" id="carousel-track">
+
+        <div class="polaroid">
+          <div class="tape tape-pink"></div>
+          <img src="photos/1.jpg" alt="Memory 1" onerror="this.src='photos/1.png'">
+          <div class="pol-sticker ps-tl">🌸</div>
+          <p class="polaroid-caption">Pure Radiance ✨</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-blue"></div>
+          <img src="photos/2.jpg" alt="Memory 2" onerror="this.src='photos/2.png'">
+          <div class="pol-sticker ps-br">🌙</div>
+          <p class="polaroid-caption">Nostalgic Days</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-mint"></div>
+          <img src="photos/3.jpg" alt="Memory 3" onerror="this.src='photos/3.png'">
+          <div class="pol-sticker ps-tl">🌿</div>
+          <p class="polaroid-caption">Golden Hours 🌅</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-lav"></div>
+          <img src="photos/4.jpg" alt="Memory 4" onerror="this.src='photos/4.png'">
+          <div class="pol-sticker ps-br">💜</div>
+          <p class="polaroid-caption">Soft Mornings</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-butter"></div>
+          <img src="photos/5.jpg" alt="Memory 5" onerror="this.src='photos/5.png'">
+          <div class="pol-sticker ps-tl">☀️</div>
+          <p class="polaroid-caption">Always Bright 🌻</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-pink"></div>
+          <img src="photos/6.jpg" alt="Memory 6" onerror="this.src='photos/6.png'">
+          <div class="pol-sticker ps-br">🌺</div>
+          <p class="polaroid-caption">Bloom Season</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-blue"></div>
+          <img src="photos/7.jpg" alt="Memory 7" onerror="this.src='photos/7.png'">
+          <div class="pol-sticker ps-tl">🌊</div>
+          <p class="polaroid-caption">Wide Horizons</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-mint"></div>
+          <img src="photos/8.jpg" alt="Memory 8" onerror="this.src='photos/8.png'">
+          <div class="pol-sticker ps-br">🍃</div>
+          <p class="polaroid-caption">Keep Smiling 🤍</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-peach"></div>
+          <img src="photos/9.jpg" alt="Memory 9" onerror="this.src='photos/9.png'">
+          <div class="pol-sticker ps-tl">🎀</div>
+          <p class="polaroid-caption">Sweet Moments</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-lav"></div>
+          <img src="photos/10.jpg" alt="Memory 10" onerror="this.src='photos/10.png'">
+          <div class="pol-sticker ps-br">✨</div>
+          <p class="polaroid-caption">Sparkling You</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-pink"></div>
+          <img src="photos/11.jpg" alt="Memory 11" onerror="this.src='photos/11.png'">
+          <div class="pol-sticker ps-tl">🌷</div>
+          <p class="polaroid-caption">In Full Bloom</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-butter"></div>
+          <img src="photos/12.jpg" alt="Memory 12" onerror="this.src='photos/12.png'">
+          <div class="pol-sticker ps-br">🫶</div>
+          <p class="polaroid-caption">Cherished Always</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-mint"></div>
+          <img src="photos/13.jpg" alt="Memory 13" onerror="this.src='photos/13.png'">
+          <div class="pol-sticker ps-tl">🦋</div>
+          <p class="polaroid-caption">Free Spirit</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-blue"></div>
+          <img src="photos/14.jpg" alt="Memory 14" onerror="this.src='photos/14.png'">
+          <div class="pol-sticker ps-br">🌙</div>
+          <p class="polaroid-caption">Night Sky Vibes</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-peach"></div>
+          <img src="photos/15.jpg" alt="Memory 15" onerror="this.src='photos/15.png'">
+          <div class="pol-sticker ps-tl">🍑</div>
+          <p class="polaroid-caption">Peachy Days</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-lav"></div>
+          <img src="photos/16.jpg" alt="Memory 16" onerror="this.src='photos/16.png'">
+          <div class="pol-sticker ps-br">💫</div>
+          <p class="polaroid-caption">Star of the Room</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-pink"></div>
+          <img src="photos/17.jpg" alt="Memory 17" onerror="this.src='photos/17.png'">
+          <div class="pol-sticker ps-tl">🌸</div>
+          <p class="polaroid-caption">Cherry Blossom</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-mint"></div>
+          <img src="photos/18.jpg" alt="Memory 18" onerror="this.src='photos/18.png'">
+          <div class="pol-sticker ps-br">🌿</div>
+          <p class="polaroid-caption">Calm & Beautiful</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-butter"></div>
+          <img src="photos/19.jpg" alt="Memory 19" onerror="this.src='photos/19.png'">
+          <div class="pol-sticker ps-tl">🌼</div>
+          <p class="polaroid-caption">Sunshine Girl</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-blue"></div>
+          <img src="photos/20.jpg" alt="Memory 20" onerror="this.src='photos/20.png'">
+          <div class="pol-sticker ps-br">🌊</div>
+          <p class="polaroid-caption">Ocean Soul</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-peach"></div>
+          <img src="photos/21.jpg" alt="Memory 21" onerror="this.src='photos/21.png'">
+          <div class="pol-sticker ps-tl">🎀</div>
+          <p class="polaroid-caption">Pretty as Ever</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-lav"></div>
+          <img src="photos/22.jpg" alt="Memory 22" onerror="this.src='photos/22.png'">
+          <div class="pol-sticker ps-br">💜</div>
+          <p class="polaroid-caption">Lavender Dreams</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-pink"></div>
+          <img src="photos/23.jpg" alt="Memory 23" onerror="this.src='photos/23.png'">
+          <div class="pol-sticker ps-tl">🌺</div>
+          <p class="polaroid-caption">Forever Glowing</p>
+        </div>
+
+        <div class="polaroid">
+          <div class="tape tape-mint"></div>
+          <img src="photos/24.jpg" alt="Memory 24" onerror="this.src='photos/24.png'">
+          <div class="pol-sticker ps-br">🤍</div>
+          <p class="polaroid-caption">Always You 🎂</p>
+        </div>
+
+      </div><!-- /.carousel-track -->
+    </div><!-- /.carousel-wrap -->
+
+    <div class="message-section">
+      <div class="msg-card">
+        <div class="msg-icon">🎀</div>
+        <p class="msg-text">
+          wishing you a birthday as beautiful<br>
+          as your laugh, as warm as your heart,<br>
+          and as bright as every room<br>
+          you walk into.
+          <span class="msg-sig">— forever rooting for you 🤍</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-doodles">
+      <span>🌸</span><span>✦</span><span>🎂</span><span>✦</span><span>🌸</span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ===== PETALS ===== */
+(function spawnPetals() {
+  const layer = document.getElementById('petal-layer');
+  const colors = ['#f4c4c4','#c4aed4','#a8bc9a','#d4a832','#9bb8cc','#f5d0b5'];
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.width = p.style.height = (6 + Math.random() * 8) + 'px';
+    p.style.background = colors[Math.floor(Math.random() * colors.length)];
+    p.style.animationDuration = (6 + Math.random() * 10) + 's';
+    p.style.animationDelay    = (Math.random() * 10) + 's';
+    p.style.borderRadius      = Math.random() > .5 ? '50% 0 50% 0' : '50%';
+    layer.appendChild(p);
+  }
+})();
+
+/* ===== PHASE 1 ===== */
+function showPuzzle() {
+  document.getElementById('open-btn').style.opacity = '0';
+  document.getElementById('open-btn').style.pointerEvents = 'none';
+  setTimeout(() => {
+    document.getElementById('open-btn').style.display = 'none';
+    const pb = document.getElementById('puzzle-box');
+    pb.style.display = 'block';
+    document.getElementById('blank-input').focus();
+  }, 250);
+}
+
+function showHint() {
+  const el = document.getElementById('error-msg');
+  el.style.color = 'var(--warm-mid)';
+  el.textContent = "Hint: it's that word you say about yourself sometimes 😏 (starts with 'm')";
+}
+
+function checkAnswer() {
+  const val = document.getElementById('blank-input').value.trim().toLowerCase();
+  const err = document.getElementById('error-msg');
+  if (val === 'mental' || val === 'mentel') {
+    err.textContent = '✓ correct! opening...';
+    err.style.color = 'var(--sage)';
+    setTimeout(revealCanvas, 700);
+  } else {
+    err.style.color = 'var(--rose)';
+    err.textContent = '❌ nope! try again 😂';
+    document.getElementById('puzzle-box').classList.add('shake');
+    setTimeout(() => document.getElementById('puzzle-box').classList.remove('shake'), 420);
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && document.getElementById('puzzle-box').style.display !== 'none') checkAnswer();
+});
+
+/* ===== CAROUSEL DUPLICATION ===== */
+function duplicateCarousel() {
+  const track = document.getElementById('carousel-track');
+  const items = Array.from(track.children);
+  items.forEach(item => track.appendChild(item.cloneNode(true)));
+}
+
+/* ===== REVEAL ===== */
+function revealCanvas() {
+  document.getElementById('screen-intro').classList.add('hidden');
+  const rev = document.getElementById('screen-reveal');
+  rev.classList.remove('hidden');
+  rev.style.display = 'flex';
+  duplicateCarousel();
+  const music = document.getElementById('bg-music');
+  music.volume = .35;
+  music.play().catch(() => {});
+}
+</script>
+</body>
+</html>
